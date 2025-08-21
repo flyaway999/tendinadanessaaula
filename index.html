@@ -11,6 +11,13 @@
 <body>
   <h1>Bem-vindo à EcoTech</h1>
   <p>Este site está agora disponível como uma PWA!</p>
-  <script src="app.js"></script>
+  
+  <!-- Importação dos scripts do Firebase primeiro -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.1.0/firebase-messaging.js"></script>
+
+  <!-- Seu script de configuração -->
+  <script type="module" src="app.js"></script>
+  
 </body>
 </html>

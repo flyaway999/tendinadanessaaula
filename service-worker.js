@@ -47,3 +47,22 @@ self.addEventListener('activate', event => {
     );
   });
   
+  self.addEventListener('install', event => {
+    console.log('Service Worker instalando.');
+    self.skipWaiting();  // Força o novo SW a ser ativado imediatamente
+  });
+  self.addEventListener('activate', event => {
+    console.log('Service Worker ativado.');
+    event.waitUntil(
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) {
+              return caches.delete(cacheName);  // Apaga caches antigos
+            }
+          })
+        );
+      })
+    );
+  });
+    
